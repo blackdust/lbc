@@ -17,6 +17,7 @@ public class Register extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nextlbc);
+
         Button startButten =(Button) findViewById(R.id.end);
         startButten.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
