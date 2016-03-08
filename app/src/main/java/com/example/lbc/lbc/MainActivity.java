@@ -1,6 +1,9 @@
 package com.example.lbc.lbc;
+import android.app.ProgressDialog;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -9,6 +12,7 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -20,13 +24,20 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     private GoogleApiClient client;
-//    EditText edittext;
+    private EditText edittextx;
+    private  Button buttonx;
+    private ImageView imageviewx;
+    private final String IMAGE_PATH = "";
+    private ProgressDialog dialog;
+    private TextView textb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         final Button nextlbc = (Button) findViewById(R.id.go_to_nextlbc);
         nextlbc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -41,32 +52,71 @@ public class MainActivity extends AppCompatActivity {
         });
 
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+        buttonx = (Button) findViewById(R.id.button3);
+        imageviewx = (ImageView) findViewById(R.id.imageView);
+
+        dialog = new ProgressDialog(this);
+        dialog.setTitle("提示");
+        dialog.setCancelable(false);
+        dialog.setMessage("下载。。。。。。。。。。。" );
+
+        buttonx.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            new MyTask().execute("不得不传入东西");
+            }
+        });
     }
+
+    public class MyTask extends AsyncTask<String, Integer, String> {
+        @Override
+        protected void onPreExecute(){
+            super.onPreExecute();
+            dialog.show();
+        }
+        @Override
+        protected String doInBackground(String... params){
+            System.out.println(1);
+            String result = null;
+            try {
+                result = test_get_request();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            System.out.println(2);
+            return result;
+        }
+        @Override
+        protected  void onPostExecute(String result){
+            super.onPostExecute(result);
+            dialog.dismiss();
+            System.out.println(result);;
+            TextView textb =(TextView) findViewById(R.id.b);
+            textb.setText(result);
+        }
+    }
+
+    String test_get_request() throws Exception {
+        String url = "http://www.baidu.com/";
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(url).build();
+        Response response = client.newCall(request).execute();
+        if (response.isSuccessful()) {
+            return response.body().string();
+        } else {
+            throw new IOException("Unexpected code " + response);
+        }
+    }
+
     private void log_in_user() {
         Intent user_main_page = new Intent(this, UserMainPage.class);
         startActivity(user_main_page);
     }
     private void nextpage() {
         Intent reister = new Intent(this, Register.class);
-//        reister.putExtra("age", "12");
-//        edittext = (EditText) findViewById(R.id.user);
-//        reister.putExtra("age", edittext.getText());
-//        edittext = (EditText) this.findViewById(R.id.user);
-//        reister.putExtra("age", edittext.getText());
-//        startActivityForResult(reister, 1000);
-//
-        String url = "http://192.168.0.131:3000/messages/test_get";
-        String res = "";
-//        OkHttpClient client = new OkHttpClient();
-//        String run(String url) throws IOException {
-//            Request request = new Request.Builder().url(url).build();
-//            Response response = client.newCall(request).execute();
-//            if (response.isSuccessful()) {
-//                return response.body().string();
-//            } else {
-//                throw new IOException("Unexpected code " + response);
-//            }
-//        }
+        edittextx = (EditText) findViewById(R.id.user);
+        System.out.println("abcdefg");
+        System.out.println(edittextx.getText());
         reister.putExtra("age", "12");
         startActivityForResult(reister, 1000);
     }
