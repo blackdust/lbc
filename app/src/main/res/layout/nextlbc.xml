@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/edit_text_password"
         android:layout_gravity="center_horizontal" />
 
     <TextView
@@ -48,7 +48,7 @@
     <EditText
         android:layout_width="236dp"
         android:layout_height="wrap_content"
-        android:id="@+id/editText2"
+        android:id="@+id/edit_text_password_confirmation"
         android:layout_gravity="center_horizontal" />
 
     <TextView
@@ -60,13 +60,13 @@
     <EditText
         android:layout_width="199dp"
         android:layout_height="wrap_content"
-        android:id="@+id/editText3" />
+        android:id="@+id/edit_text_phone" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="发送"
-        android:id="@+id/button"
+        android:id="@+id/button_msg_check"
         android:layout_gravity="right" />
 
     <TextView

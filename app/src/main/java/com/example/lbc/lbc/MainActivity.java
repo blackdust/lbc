@@ -1,23 +1,25 @@
 package com.example.lbc.lbc;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.content.Intent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+
 import java.io.IOException;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -59,11 +61,10 @@ public class MainActivity extends AppCompatActivity {
         dialog = new ProgressDialog(this);
         dialog.setTitle("提示");
         dialog.setCancelable(false);
-        dialog.setMessage("下载。。。。。。。。。。。" );
-
+        dialog.setMessage("下载中。。。。。。。。。。。" );
         buttonx.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            new MyTask().execute("不得不传入东西");
+            new MyTask().execute("传入东西");
             }
         });
     }
@@ -76,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         }
         @Override
         protected String doInBackground(String... params){
-            System.out.println(1);
             String result = null;
             try {
                 result = test_get_request();
