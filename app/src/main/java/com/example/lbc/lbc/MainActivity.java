@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,9 +24,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         final Button nextlbc = (Button) findViewById(R.id.go_to_nextlbc);
         nextlbc.setOnClickListener(new View.OnClickListener() {
@@ -52,13 +48,10 @@ public class MainActivity extends AppCompatActivity {
                 result_for_task = null;
                 System.out.println("初始化"+ result_for_task);
                 new MyTask().execute("传入东西");
-                System.out.println("异步任务启动后");
                 System.out.println( result_for_task);
             }
         });
-
     }
-
 
 //    测试getbaidu
     public class MyTask extends AsyncTask<String, Integer, String> {
@@ -100,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void log_in_user() {
-
 //        登入成功则跳入新页面
         Intent user_main_page = new Intent(this, UserMainPage.class);
         startActivity(user_main_page);
