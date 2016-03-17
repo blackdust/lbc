@@ -29,4 +29,5 @@ dependencies {
     //    compile 'com.github.destinyd:authenticator:0.0.7-SNAPSHOT'
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
     compile 'com.android.support:support-v4:24.0.0-alpha1'
+    compile files('C:/Users/lbc/AndroidStudioProjects/lbc/libs/gson-2.1.jar')
 }
