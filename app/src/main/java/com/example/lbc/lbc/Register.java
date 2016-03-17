@@ -77,64 +77,69 @@ public class Register extends AppCompatActivity {
                 String result = post_to_phone_num_check_mod_check_validation(params[0], params[1]);
                 JSONObject dataJson = new JSONObject(result);
                 System.out.println(dataJson.getString("validation_result").equals(incorrect));
-//                if (dataJson.getString("validation_result").equals(incorrect)) {
-//                    wrong_msg_arr[0][0]="validation_result";
-//                    wrong_msg_arr[0][1]="验证码错误";
-//                } else {
-//                    //               读取各控件的值去post play auth
-//                    String create_user_result = post_to_play_auth();
-//                    JSONObject json_from_play_auth = new JSONObject(create_user_result);
-////                    System.out.println("建立用户的结果");
-//                    if (json_from_play_auth.getString("create_user").equals("fail")) {
-////                        System.out.println(json_from_play_auth.getString("msg"));
-//                        Gson gson = new Gson();
-//                        Map datamap = gson.fromJson(json_from_play_auth.getString("msg"), Map.class);
-//                        if(datamap.get("name")!=null){
-//                            wrong_msg_arr[0][0] =  "name";
-//                            wrong_msg_arr[0][1] = datamap.get("name").toString().replaceAll("\\]|\\[","");
-//                        }
-//                        if(datamap.get("phone_num")!=null){
-//                            wrong_msg_arr[1][0] =  "phone_num";
-//                            wrong_msg_arr[1][1] = datamap.get("phone_num").toString().replaceAll("\\]|\\[","");
-//                        }
-//                        if(datamap.get("password_confirmation")!=null){
-//                            wrong_msg_arr[2][0] =  "password_confirmation";
-//                            wrong_msg_arr[2][1] = datamap.get("password_confirmation").toString().replaceAll("\\]|\\[","");
-//                        }
-//                    } else {
-////                    注册成功 跳到登录页面
-//                        Intent i = getIntent();
-//                        i.putExtra("callback", "注册成功");
-//                        setResult(100, i);
-//                finish();
-//                    }
-//                }
-
-
-                String create_user_result = post_to_play_auth();
-                JSONObject json_from_play_auth = new JSONObject(create_user_result);
-                if (json_from_play_auth.getString("create_user").equals("fail")) {
-                    Gson gson = new Gson();
-                    Map datamap = gson.fromJson(json_from_play_auth.getString("msg"), Map.class);
-                    if(datamap.get("name")!=null){
-                        wrong_msg_arr[0][0] =  "name";
-                        wrong_msg_arr[0][1] = datamap.get("name").toString().replaceAll("\\]|\\[","");
-                    }
-                    if(datamap.get("phone_num")!=null){
-                        wrong_msg_arr[1][0] =  "phone_num";
-                        wrong_msg_arr[1][1] = datamap.get("phone_num").toString().replaceAll("\\]|\\[","");
-                    }
-                    if(datamap.get("password_confirmation")!=null){
-                        wrong_msg_arr[2][0] =  "password_confirmation";
-                        wrong_msg_arr[2][1] = datamap.get("password_confirmation").toString().replaceAll("\\]|\\[","");
-                    }
+                if (dataJson.getString("validation_result").equals(incorrect)) {
+                    wrong_msg_arr[0][0]="validation_result";
+                    wrong_msg_arr[0][1]="验证码错误";
                 } else {
+                    String create_user_result = post_to_play_auth();
+                    JSONObject json_from_play_auth = new JSONObject(create_user_result);
+                    if (json_from_play_auth.getString("create_user").equals("fail")) {
+                        Gson gson = new Gson();
+                        Map datamap = gson.fromJson(json_from_play_auth.getString("msg"), Map.class);
+                        if(datamap.get("name")!=null){
+                            wrong_msg_arr[0][0] =  "name";
+                            wrong_msg_arr[0][1] = datamap.get("name").toString().replaceAll("\\]|\\[","");
+                        }
+                        if(datamap.get("phone_num")!=null){
+                            wrong_msg_arr[1][0] =  "phone_num";
+                            wrong_msg_arr[1][1] = datamap.get("phone_num").toString().replaceAll("\\]|\\[","");
+                        }
+                        if(datamap.get("password_confirmation")!=null){
+                            wrong_msg_arr[2][0] =  "password_confirmation";
+                            wrong_msg_arr[2][1] = datamap.get("password_confirmation").toString().replaceAll("\\]|\\[","");
+                        }
+                        if(datamap.get("password")!=null){
+                            wrong_msg_arr[3][0] =  "password";
+                            wrong_msg_arr[3][1] = datamap.get("password").toString().replaceAll("\\]|\\[","");
+                        }
+                    } else {
 //                    注册成功 跳到登录页面
                         Intent i = getIntent();
                         i.putExtra("callback", "注册成功");
                         setResult(100, i);
                         finish();
+                    }
                 }
+
+//
+//                String create_user_result = post_to_play_auth();
+//                JSONObject json_from_play_auth = new JSONObject(create_user_result);
+//                if (json_from_play_auth.getString("create_user").equals("fail")) {
+//                    Gson gson = new Gson();
+//                    Map datamap = gson.fromJson(json_from_play_auth.getString("msg"), Map.class);
+//                    if(datamap.get("name")!=null){
+//                        wrong_msg_arr[0][0] =  "name";
+//                        wrong_msg_arr[0][1] = datamap.get("name").toString().replaceAll("\\]|\\[","");
+//                    }
+//                    if(datamap.get("phone_num")!=null){
+//                        wrong_msg_arr[1][0] =  "phone_num";
+//                        wrong_msg_arr[1][1] = datamap.get("phone_num").toString().replaceAll("\\]|\\[","");
+//                    }
+//                    if(datamap.get("password_confirmation")!=null){
+//                        wrong_msg_arr[2][0] =  "password_confirmation";
+//                        wrong_msg_arr[2][1] = datamap.get("password_confirmation").toString().replaceAll("\\]|\\[","");
+//                    }
+//                    if(datamap.get("password")!=null){
+//                        wrong_msg_arr[3][0] =  "password";
+//                        wrong_msg_arr[3][1] = datamap.get("password").toString().replaceAll("\\]|\\[","");
+//                    }
+//                } else {
+////                    注册成功 跳到登录页面
+//                        Intent i = getIntent();
+//                        i.putExtra("callback", "注册成功");
+//                        setResult(100, i);
+//                        finish();
+//                }
 
 
 
@@ -160,6 +165,8 @@ public class Register extends AppCompatActivity {
         String name_error_msg_text = "";
         phone_error_msg = (TextView) findViewById(R.id.phone_error_msg);
         String phone_error_msg_text = "";
+        password_error_msg = (TextView) findViewById(R.id.password_error_msg);
+        String password_error_msg_text = "";
         for (int x = 0; x < msgs.length; x = x + 1) {
             if (msgs[x][0] != null) {
                 switch (msgs[x][0]) {
@@ -175,6 +182,9 @@ public class Register extends AppCompatActivity {
                     case "password_confirmation":
                         password_confirmation_error_msg_text += msgs[x][1];
                         break;
+                    case "password":
+                        password_error_msg_text += msgs[x][1];
+                        break;
                 }
             }
         }
@@ -182,6 +192,7 @@ public class Register extends AppCompatActivity {
         name_error_msg.setText(name_error_msg_text);
         password_confirmation_error_msg.setText(password_confirmation_error_msg_text);
         phone_error_msg.setText(phone_error_msg_text);
+        password_error_msg.setText(password_error_msg_text);
     }
 
     //    post1
@@ -207,7 +218,7 @@ public class Register extends AppCompatActivity {
 
     //    post2
     String post_to_play_auth() throws Exception {
-        System.out.println("服务器");
+        System.out.println("开始提交注册用户表单");
         String url = "http://192.168.1.10:3000/auth/users";
         OkHttpClient client = new OkHttpClient();
         RequestBody formBody = new FormBody.Builder()
