@@ -137,13 +137,14 @@ public class MainActivity extends AppCompatActivity {
             if(result.equals("登录成功")){
                 log_in_user();
             }else{
+                TextView title =(TextView) findViewById(R.id.return_msg);
                 title.setText("登录失败");
             }
         }
     }
 
     String log_in_post_request() throws Exception {
-        String url = "http://192.168.1.10:3000/auth/login";
+        String url = "http://192.168.0.164:3000/auth/login";
         OkHttpClient client = new OkHttpClient();
         RequestBody formBody = new FormBody.Builder()
                 .add("session[phone_num]", phone_num_text.getText().toString())
@@ -178,9 +179,9 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode,resultCode,data);
         if(requestCode==1000&&resultCode==100){
             final String callbackstr =data.getStringExtra("callback");
-            final TextView callbacktext =(TextView) findViewById(R.id.b);
+            final TextView callbacktext =(TextView) findViewById(R.id.return_msg);
             callbacktext.setText(callbackstr);
-
+            callbacktext.setTextColor(Integer.parseInt("#0DA025"));
 //            TimerTask task = new TimerTask(){
 //                public void run(){
 //                    callbacktext.setText("软件学院");

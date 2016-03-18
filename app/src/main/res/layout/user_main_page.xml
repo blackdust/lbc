@@ -4,8 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.example.lbc.lbc.PublishLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" />
     <ListView
         android:id="@+id/mListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="400dp"/>
 </LinearLayout>

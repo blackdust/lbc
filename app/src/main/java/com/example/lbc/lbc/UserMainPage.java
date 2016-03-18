@@ -38,14 +38,14 @@ public class UserMainPage extends AppCompatActivity {
     public List<String>getDataSource(){
         List<String> list = new ArrayList<String>();
         for(int i = 0;i < 30 ;i++){
-            list.add("jack"+i);
+            list.add("课程"+i);
         }
         return  list;
     }
 
 
 
-    public class Task_for_post_to_phone_num_check_mod extends AsyncTask<String, Integer, String> {
+    public class Task_for_add_list extends AsyncTask<String, Integer, String> {
         @Override
         protected String doInBackground(String... params) {
             String result = null;

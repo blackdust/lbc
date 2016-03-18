@@ -197,7 +197,7 @@ public class Register extends AppCompatActivity {
 
     //    post1
     String post_to_phone_num_check_mod_check_validation(String phone_num, String fill_validate) throws Exception {
-        String url = "http://192.168.1.10:3000/messages/check_validation";
+        String url = "http://192.168.0.164:3000/messages/check_validation";
         OkHttpClient client = new OkHttpClient();
         System.out.println("开始验证填写的验证码");
         RequestBody formBody = new FormBody.Builder()
@@ -219,7 +219,7 @@ public class Register extends AppCompatActivity {
     //    post2
     String post_to_play_auth() throws Exception {
         System.out.println("开始提交注册用户表单");
-        String url = "http://192.168.1.10:3000/auth/users";
+        String url = "http://192.168.0.164:3000/auth/users";
         OkHttpClient client = new OkHttpClient();
         RequestBody formBody = new FormBody.Builder()
                 .add("user[name]", edit_name_text.getText().toString())
@@ -260,7 +260,7 @@ public class Register extends AppCompatActivity {
     }
 
     String http_post_request(String json) throws Exception {
-        String url = "http://192.168.1.10:3000/messages";
+        String url = "http://192.168.0.164:3000/messages";
         OkHttpClient client = new OkHttpClient();
         RequestBody formBody = new FormBody.Builder()
                 .add("message[phone_num]", json)
