@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
             final String callbackstr =data.getStringExtra("callback");
             final TextView callbacktext =(TextView) findViewById(R.id.return_msg);
             callbacktext.setText(callbackstr);
-            callbacktext.setTextColor(Integer.parseInt("#0DA025"));
+//            callbacktext.setTextColor(Integer.parseInt("#0DA025"));
 //            TimerTask task = new TimerTask(){
 //                public void run(){
 //                    callbacktext.setText("软件学院");
