@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     String log_in_post_request() throws Exception {
-        String url = "http://192.168.0.164:3000/auth/login";
+        String url = "http://192.168.1.10:3000/auth/login";
         OkHttpClient client = new OkHttpClient();
         RequestBody formBody = new FormBody.Builder()
                 .add("session[phone_num]", phone_num_text.getText().toString())

@@ -146,7 +146,7 @@ public class UserMainPage extends AppCompatActivity {
 
     String request_list(String param) throws Exception {
         System.out.println("请求列表");
-        String url = "http://192.168.0.164:3000/messages/test_get";
+        String url = "http://192.168.1.10:3000/messages/test_get";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
         Response response = client.newCall(request).execute();

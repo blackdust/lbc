@@ -17,6 +17,7 @@
     android:layout_height="100dp"
     android:layout_width="170dp"
     android:background="#E5F0FC"
+    android:textSize="9dp"
     android:layout_below = "@+id/list_title"
     android:id="@+id/list_context"
     android:text="" />

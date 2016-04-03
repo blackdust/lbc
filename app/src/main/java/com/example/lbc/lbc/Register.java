@@ -110,39 +110,6 @@ public class Register extends AppCompatActivity {
                         finish();
                     }
                 }
-
-//
-//                String create_user_result = post_to_play_auth();
-//                JSONObject json_from_play_auth = new JSONObject(create_user_result);
-//                if (json_from_play_auth.getString("create_user").equals("fail")) {
-//                    Gson gson = new Gson();
-//                    Map datamap = gson.fromJson(json_from_play_auth.getString("msg"), Map.class);
-//                    if(datamap.get("name")!=null){
-//                        wrong_msg_arr[0][0] =  "name";
-//                        wrong_msg_arr[0][1] = datamap.get("name").toString().replaceAll("\\]|\\[","");
-//                    }
-//                    if(datamap.get("phone_num")!=null){
-//                        wrong_msg_arr[1][0] =  "phone_num";
-//                        wrong_msg_arr[1][1] = datamap.get("phone_num").toString().replaceAll("\\]|\\[","");
-//                    }
-//                    if(datamap.get("password_confirmation")!=null){
-//                        wrong_msg_arr[2][0] =  "password_confirmation";
-//                        wrong_msg_arr[2][1] = datamap.get("password_confirmation").toString().replaceAll("\\]|\\[","");
-//                    }
-//                    if(datamap.get("password")!=null){
-//                        wrong_msg_arr[3][0] =  "password";
-//                        wrong_msg_arr[3][1] = datamap.get("password").toString().replaceAll("\\]|\\[","");
-//                    }
-//                } else {
-////                    注册成功 跳到登录页面
-//                        Intent i = getIntent();
-//                        i.putExtra("callback", "注册成功");
-//                        setResult(100, i);
-//                        finish();
-//                }
-
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -197,7 +164,7 @@ public class Register extends AppCompatActivity {
 
     //    post1
     String post_to_phone_num_check_mod_check_validation(String phone_num, String fill_validate) throws Exception {
-        String url = "http://192.168.0.164:3000/messages/check_validation";
+        String url = "http://192.168.1.10:3000/messages/check_validation";
         OkHttpClient client = new OkHttpClient();
         System.out.println("开始验证填写的验证码");
         RequestBody formBody = new FormBody.Builder()
@@ -219,7 +186,7 @@ public class Register extends AppCompatActivity {
     //    post2
     String post_to_play_auth() throws Exception {
         System.out.println("开始提交注册用户表单");
-        String url = "http://192.168.0.164:3000/auth/users";
+        String url = "http://192.168.1.10:3000/auth/users";
         OkHttpClient client = new OkHttpClient();
         RequestBody formBody = new FormBody.Builder()
                 .add("user[name]", edit_name_text.getText().toString())
@@ -260,7 +227,7 @@ public class Register extends AppCompatActivity {
     }
 
     String http_post_request(String json) throws Exception {
-        String url = "http://192.168.0.164:3000/messages";
+        String url = "http://192.168.1.10:3000/messages";
         OkHttpClient client = new OkHttpClient();
         RequestBody formBody = new FormBody.Builder()
                 .add("message[phone_num]", json)
