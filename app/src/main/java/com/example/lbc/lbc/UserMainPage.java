@@ -35,7 +35,7 @@ public class UserMainPage extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_main_page);
-
+//       git 我草你妈
         mylist = (ListView) findViewById(R.id.mListView);
 
         dialog = new ProgressDialog(this);
