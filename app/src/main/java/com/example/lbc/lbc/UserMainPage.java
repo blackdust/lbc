@@ -37,11 +37,6 @@ public class UserMainPage extends AppCompatActivity {
         setContentView(R.layout.user_main_page);
 
         mylist = (ListView) findViewById(R.id.mListView);
-//        adapter = new ArrayAdapter<String>(
-//                this,
-//                R.layout.item_marrayadapter,
-//                getDataSource());
-//        mylist.setAdapter(adapter);
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("LOADING");
